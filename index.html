@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess Game</title>
+    <link rel="shortcut icon" href="card-games.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <h2 id="heading">Number Guessing Game</h2>
+            <div class="text">
+                <p>Try and guess a random number between 1 to 100</p>
+            </div>
+            <input type="text" id="GuessField" placeholder="1-100">
+            <div class="box1">
+                <button id="SubmitBtn">New Game</button>
+                <div class="box2">
+                    <button id="hint"><img src="idea.png" alt=""><span id="hintRem">2</span></button>
+                </div>
+            </div>
+            <p id="PrevGuess">Previous Guesses:<span id="PrevGuessDisplay">No Guesses</span></p>
+            <p id="RemGuess">Guess Remaining:<span id="RemGuessDisplay">10</span></p>
+            <!-- <figure class="images">
+                <img src="startgame1.jpeg">
+                <figcaption>Start the Game</figcaption>
+            </figure> -->
+            <div class="images">
+                <img src="startgame1.jpeg" class="curr-img">
+                <div class="img-txt">All the Best</div>
+            </div>
+        </div>
+    </div>
+    <audio id="GameOverSound" src="mixkit-fairytale-game-over-1945.wav"></audio>
+    <audio id="GameStartSound" src="game-start-6104.mp3"></audio>
+    <audio id="No" src="Cut_Convert_932449955006203(1).mp3"></audio>
+    <script src="script.js"></script>
+</body>
+
+</html>
