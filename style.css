@@ -212,9 +212,18 @@ input {
 
 @media screen and (max-width: 555px) {
     .container{
-        width: 430px;
+        width: 90%;
     }
     .images{
-        width: 410px;
+        width: 100%;
+    }
+    #GuessField{
+        width: 90%;
+    }
+    #SubmitBtn{
+        height: 40px;
+    }
+    #hintRem{
+        font-size: 15px;
     }
   }
