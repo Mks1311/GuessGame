@@ -9,9 +9,11 @@ let PrevGuessDisplay = document.querySelector("#PrevGuessDisplay");
 let RemGuessDisplay = document.querySelector("#RemGuessDisplay");
 let GuessDisplay = false;
 let NewGameFlag = true;
+let HintFlag=false;
 
 Submit.addEventListener('click', function e(event) {
     if (PlayGame) {
+        HintFlag=true;
         console.log("PlayGame");
         event.preventDefault();
         if (NewGameFlag) {
@@ -39,7 +41,7 @@ Submit.addEventListener('click', function e(event) {
 function Process(Number) {
     PrevGuesses.push(Number);
     if (Number === RandomNumber) {
-        DisplayMessage(`Correct Guess`, "wonGame.jpg");
+        DisplayMessage(`${RandomNumber} is Correct Guess`, "wonGame.jpg");
         EndGame();
     }
     else {
@@ -79,7 +81,7 @@ function ValidateGuess(Number) {
     }
 }
 function UpdateValue(Number) {
-    // GuessField.value = '';
+    GuessField.value = '';
     PrevGuessDisplay.innerHTML += `${Number}, `;
     RemGuessDisplay.innerHTML = 10 - PrevGuesses.length;
 }
@@ -112,5 +114,52 @@ function NewGame() {
         PlayGame = true;
         GuessDisplay = false;
         newSubmit.innerHTML = "Guess";
+        let hintNum = (document.querySelector("#hintRem"));
+        hintNum.textContent=2;
+        let hints=document.querySelector("#Hints");
+        let liEl=hints.querySelectorAll("li");
+        liEl.forEach((li)=>{
+            hints.removeChild(li);
+        });
     })
 }
+
+
+let hintImg = document.querySelector("#hint-img");
+let Hints = document.querySelector("#Hints");
+let hintTxt=document.querySelector(".hint-txt");
+hintImg.addEventListener("click", function () {
+    if (HintFlag) {
+        let hintNum = (document.querySelector("#hintRem"));
+        let Num = parseInt(hintNum.textContent);
+        console.log(Num);
+        if (Num === 2) {
+            const listItem1 = document.createElement("li");
+            if (RandomNumber % 2 === 0) {
+                listItem1.textContent = "Number is Even";
+            } else {
+                listItem1.textContent = "Number is Odd";
+            }
+            Hints.appendChild(listItem1)
+            hintNum.textContent = 1;
+            hintTxt.style.top="-90%"; 
+            hintTxt.style.right="-20%";
+        }
+        else if (Num == 1) {
+            const listItem1 = document.createElement("li");
+            if (RandomNumber <= 10) {
+                listItem1.textContent = "Number is <= 10";
+            } else {
+                let NumString = RandomNumber.toString();
+                listItem1.textContent = `First digit of number is ${NumString[0]} and is >10`;
+            }
+            Hints.appendChild(listItem1)
+            hintNum.textContent = 0;
+            hintTxt.style.top="-120%"; 
+            hintTxt.style.right="-70%";
+        } else {
+            alert("No Hint Remaing")
+        }
+    }
+
+})
