@@ -3,17 +3,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Quicksand:wght@300..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Josefin Sans", sans-serif;
 }
-#heading{
+
+#heading {
+    width: 100%;
     font-family: "Honk", system-ui;
     font-size: 50px;
 }
-.wrapper{
+
+.wrapper {
     overflow-x: hidden;
     overflow-y: auto;
     display: flex;
@@ -22,7 +25,9 @@
     align-items: center;
     background: linear-gradient(45deg, #0a0a0a, #3a4452);
 }
-.container{
+
+.container {
+    margin: auto auto auto auto;
     width: 500px;
     border: 1px solid white;
     padding: 10px;
@@ -33,64 +38,129 @@
     box-shadow: 0px 3px 15px rgba(113, 115, 119, 0.5);
     font-size: 20px;
 }
-#hint{
+
+#hint {
     /* display: flex; */
     height: 50px;
     /* margin-left: 90px; */
     /* margin-top: 10px; */
     align-items: center;
+
     gap: 10px;
     border: none;
     color: white;
     font-size: 20px;
     background: transparent;
     display: inline-flex;
+    direction: ltr;
+    position: relative;
 }
-.box1{
-    margin: 10px;
+
+.hint-txt:after,
+.hint-txt::after {
+    position: absolute;
+    top: 90%;
+    right: 10%;
+    margin-left: -50%;
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: solid 15px #3a4452;
+    border-left: solid 10px transparent;
+    border-right: solid 10px transparent;
+    transform-origin: top center;
+}
+
+.hint-txt {
+    position: absolute;
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    color: white;
+    background-color: #3a4452;
+    top: -70%;
+    text-align: left;
+    border-radius: 7px;
+    padding: 5px 10px;
+    width: max-content;
+    max-width: inherit;
+    right: 0;
+    transition: opacity 0.5s ease;
+    font-size: 15px;
+}
+li{
+    list-style-type: none;
+}
+#hint-img:hover+.hint-txt {
+    visibility: visible;
+    opacity: 1;
+}
+
+.box1 {
+    margin: 0 auto;
     display: flex;
-    justify-content: space-around;
-    
+    justify-content: space-evenly;
+    display: flex;
+    font-size: 20px;
+    background-color: transparent;
+    /* border: 1px solid white; */
+    padding: 20px;
+    align-items: center;
 }
-.box2{
+
+.box2 {
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
-    align-items:baseline;
+    /* align-items: baseline; */
     cursor: pointer;
-    /* z-index: 100; */
+    /* margin-left: 240px; */
+    width: 7%;
+    /* position: absolute;  */
+    position: relative;
+    display: flex;
+    justify-content: center;
 }
-#PrevGuess{
-    margin-top: 20px;
+
+#PrevGuess {
+    margin-top: px;
 }
-#hintRem{
+
+#hintRem {
     margin-top: 5px;
     font-size: 20px;
 }
-#hint img{
-    height: 35px;
-    width: 35px;
-    cursor: pointer;
+
+#hint img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
 }
-#PrevGuessDisplay,#RemGuessDisplay{
+
+#PrevGuessDisplay,
+#RemGuessDisplay {
     font-size: 15px;
     font-family: "Quicksand", sans-serif;
 }
-img{
+
+img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
-.images{
+
+.images {
+    /* display: flex; */
     width: 480px;
     height: 300px;
     padding: 10px;
     /* position: relative; */
 }
-.images img{
+
+.images img {
     object-fit: contain;
 }
-.img-txt{
+
+.img-txt {
     font-family: "Honk", system-ui;
     color: white;
     font-size: 30px;
@@ -99,13 +169,18 @@ img{
     /* font-family: "Bebas Neue", sans-serif; */
     /* text-shadow: 0 0 10px black; */
 }
-.text{
+
+.text {
     width: 350px;
     text-align: center;
-    margin-left: auto;
+    margin: 10px auto;
+    /* margin-left: auto;
     margin-right: auto;
+    margin; */
 }
-input,#SubmitBtn{
+
+input,
+#SubmitBtn {
     height: 50px;
     font-size: 20px;
     /* margin: 10px; */
@@ -113,14 +188,17 @@ input,#SubmitBtn{
     background: transparent;
     color: white;
 }
-input{
+
+input {
     padding: 10px;
 }
-#GuessField{
+
+#GuessField {
     width: 400px;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
 }
-#SubmitBtn{
+
+#SubmitBtn {
     width: 200px;
     cursor: pointer;
     border-radius: 16px;
@@ -131,6 +209,12 @@ input{
     border: none;
     box-shadow: -3px 3px 3px rgba(113, 115, 119, 0.5);
 }
-p{
-    margin: 10px;
-}
+
+@media screen and (max-width: 555px) {
+    .container{
+        width: 430px;
+    }
+    .images{
+        width: 410px;
+    }
+  }
