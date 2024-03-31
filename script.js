@@ -41,7 +41,9 @@ Submit.addEventListener('click', function e(event) {
 function Process(Number) {
     PrevGuesses.push(Number);
     if (Number === RandomNumber) {
-        DisplayMessage(`${RandomNumber} is Correct Guess`, "wonGame.jpg");
+        const audio=document.querySelector("#correct");
+        audio.play();
+        DisplayMessage(`${RandomNumber} is Correct Guess`, "images/crrImg.png");
         EndGame();
     }
     else {
@@ -49,7 +51,7 @@ function Process(Number) {
             const audio = document.querySelector("#GameOverSound");
             audio.play();
             UpdateValue(Number);
-            DisplayMessage(`Game Over, Random Number was ${RandomNumber}`, "lostGame.webp");
+            DisplayMessage(`Game Over, Random Number was ${RandomNumber}`, "images/lostGame.webp");
             EndGame();
         }
         else {
@@ -58,7 +60,7 @@ function Process(Number) {
             UpdateValue(Number);
             let msg = `Noooo!!`;
             if (PrevGuesses.length >= 2) msg += ` x${PrevGuesses.length}`;
-            DisplayMessage(msg, "Noo.png");
+            DisplayMessage(msg, "images/Noo.png");
         }
     }
 }
@@ -81,7 +83,7 @@ function ValidateGuess(Number) {
     }
 }
 function UpdateValue(Number) {
-    GuessField.value = '';
+    // GuessField.value = '';
     PrevGuessDisplay.innerHTML += `${Number}, `;
     RemGuessDisplay.innerHTML = 10 - PrevGuesses.length;
 }
@@ -108,7 +110,7 @@ function NewGame() {
         PrevGuesses = [];
         RemGuessDisplay.innerHTML = 10 - PrevGuesses.length;
         PrevGuessDisplay.innerHTML = "No Guesses";
-        DisplayMessage(`All the Best`, "startgame1.jpeg");
+        DisplayMessage(`All the Best`, "images/guruji.jpg");
         newSubmit.removeEventListener("click", e);
         GuessField.removeAttribute("disabled");
         PlayGame = true;
@@ -132,8 +134,10 @@ hintImg.addEventListener("click", function () {
     if (HintFlag) {
         let hintNum = (document.querySelector("#hintRem"));
         let Num = parseInt(hintNum.textContent);
+        const audio=document.querySelector("#hint-snd");
         console.log(Num);
         if (Num === 2) {
+            audio.play();
             const listItem1 = document.createElement("li");
             if (RandomNumber % 2 === 0) {
                 listItem1.textContent = "Number is Even";
@@ -146,6 +150,7 @@ hintImg.addEventListener("click", function () {
             hintTxt.style.right="-20%";
         }
         else if (Num == 1) {
+            audio.play();
             const listItem1 = document.createElement("li");
             if (RandomNumber <= 10) {
                 listItem1.textContent = "Number is <= 10";
