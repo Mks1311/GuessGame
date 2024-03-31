@@ -10,6 +10,9 @@ let RemGuessDisplay = document.querySelector("#RemGuessDisplay");
 let GuessDisplay = false;
 let NewGameFlag = true;
 let HintFlag=false;
+let hintImg = document.querySelector("#hint-img");
+let Hints = document.querySelector("#Hints");
+let hintTxt=document.querySelector(".hint-txt");
 
 Submit.addEventListener('click', function e(event) {
     if (PlayGame) {
@@ -110,7 +113,7 @@ function NewGame() {
         PrevGuesses = [];
         RemGuessDisplay.innerHTML = 10 - PrevGuesses.length;
         PrevGuessDisplay.innerHTML = "No Guesses";
-        DisplayMessage(`All the Best`, "images/guruji.jpg");
+        DisplayMessage(`chaliye shuru karte hai`, "images/guruji.jpg");
         newSubmit.removeEventListener("click", e);
         GuessField.removeAttribute("disabled");
         PlayGame = true;
@@ -123,13 +126,13 @@ function NewGame() {
         liEl.forEach((li)=>{
             hints.removeChild(li);
         });
+        hintTxt.style.top="-70%"; 
+        hintTxt.style.right="0";
     })
 }
 
 
-let hintImg = document.querySelector("#hint-img");
-let Hints = document.querySelector("#Hints");
-let hintTxt=document.querySelector(".hint-txt");
+
 hintImg.addEventListener("click", function () {
     if (HintFlag) {
         let hintNum = (document.querySelector("#hintRem"));
