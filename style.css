@@ -73,7 +73,6 @@
 
 .hint-txt {
     position: absolute;
-    position: absolute;
     visibility: hidden;
     opacity: 0;
     color: white;
@@ -225,5 +224,9 @@ input {
     }
     #hintRem{
         font-size: 15px;
+    }
+    .hint-txt{
+        top: -100%;
+        right: -35%;
     }
   }
